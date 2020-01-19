@@ -10,6 +10,8 @@ class MyCoolApp extends StatefulWidget {
 }
 
 class _MyCoolAppState extends State<MyCoolApp> {
+  List<String> _products = ['Food Paradise'];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,13 +28,19 @@ class _MyCoolAppState extends State<MyCoolApp> {
                   child: Text('Add Card'),
                 ),
               ),
-              Card(
-                child: Column(
-                  children: <Widget>[
-                    Image.asset('assets/food_paradise.jpeg'),
-                    Text('Food Paradise')
-                  ],
-                ),
+              Column(
+                children: _products
+                    .map(
+                      (element) => Card(
+                        child: Column(
+                          children: <Widget>[
+                            Image.asset('assets/food_paradise.jpeg'),
+                            Text(element)
+                          ],
+                        ),
+                      ),
+                    )
+                    .toList(),
               ),
             ],
           )),
